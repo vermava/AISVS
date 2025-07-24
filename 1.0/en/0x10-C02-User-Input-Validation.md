@@ -31,7 +31,7 @@ Natural Language Processing (NLP) models are still vulnerable to subtle characte
 | **2.2.3** | **Verify that** the inference pipeline supports optional adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation) for high-risk endpoints. | 2 | D |
 | **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, logged with full payloads (after PII redaction).  | 2 | V |
 | **2.2.5** | **Verify that** robustness metrics (success rate of known attack suites) are tracked over time and regressions trigger a release blocker.  | 3 |  D/V |
-
+| **2.2.6** | **Verify that** Continuous monitoring and anomaly detection can flag sudden distribution shifts or unusually complex prompts.  | 3 |  D/V |
 ---
 
 ## C2.3 Schema, Type & Length Validation
@@ -54,7 +54,7 @@ Developers should be able to detect syntactically valid prompts that request dis
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.4.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
+| **2.4.1** | **Verify that** a content classifier (zero shot or fine-tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
 | **2.4.2** | **Verify that** inputs which violate policies will receive standardized refusals or safe completions so they will not propagate to downstream LLM calls. | 1 |  D/V |
 | **2.4.3** | **Verify that** the screening model or rule set is retrained/updated at least quarterly, incorporating newly observed jailbreak or policy bypass patterns.  | 2 | D |
 | **2.4.4** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time.  | 2 | D |
@@ -97,7 +97,7 @@ AI systems should support auditing, abuse tracking, and compliance by monitoring
 | **2.7.1** | **Verify that** all user inputs are tagged with metadata (user ID, session, source, timestamp, IP address) at ingestion. | 1 | D/V |
 | **2.7.2** | **Verify that** provenance metadata is retained and auditable for all processed inputs. | 2 | D/V |
 | **2.7.3** | **Verify that** anomalous or untrusted input sources are flagged and subject to enhanced scrutiny or blocking. | 2 | D/V |
-
+| **2.7.4** | **Verify that** Abnormal patterns (e.g., an account suddenly submitting requests from a new country) can trigger additional. | 2 | D/V |
 ---
 
 ## C2.8 Real-Time Adaptive Threat Detection
@@ -113,6 +113,7 @@ Developers should employ advanced threat detection systems for AI that adapt to 
 | **2.8.5** | **Verify that** threat detection false positive rates are continuously monitored and pattern specificity is automatically tuned to minimize legitimate use case interference. | 3 | D/V |
 | **2.8.6** | **Verify that** contextual threat analysis considers input source, user behavior patterns, and session history to improve detection accuracy. | 3 | D/V |
 | **2.8.7** | **Verify that** threat detection performance metrics (detection rate, processing latency, resource utilization) are monitored and optimized in real-time. | 3 | D/V |
+| **2.8.8** | **Verify that** rule engine can pre‑filter and the ML model can check borderline cases and reduce latency. | 3 | D/V |
 
 ---
 
@@ -127,6 +128,7 @@ Developers should provide security validation for text, image, audio, and other 
 | **2.9.3** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
 | **2.9.4** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results, threat scores, and correlation analysis with structured log formats for SIEM integration. | 3 | D/V |
 | **2.9.5** | **Verify that** modality-specific content classifiers are updated according to documented schedules (minimum quarterly) with new threat patterns, adversarial examples, and performance benchmarks maintained above baseline thresholds. | 3 | D/V |
+
 
 ---
 
